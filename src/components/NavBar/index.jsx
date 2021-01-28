@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Logo from '../../img/mainLogo.png';
 
 function NavBar() {
@@ -10,7 +11,7 @@ function NavBar() {
 
     return(
         <div className="row shadow rounded m-0 p-3 bg-white" style={style}>
-            <a href="/"><img src={Logo} className="d-flex" width="35px" alt="brand" /></a>
+            <Link to ="/"><img src={Logo} className="d-flex" width="35px" alt="brand" /></Link>
             <div className="pl-3" style={{fontWeight: "bold", fontSize: "20px"}}>Inventory Management System</div>
         </div>
     )
