@@ -10,7 +10,7 @@ class Dashboard extends Component {
                             <p style={{ fontSize: "14px", color: "grey" }}>SALES CYMBALS THIS MONTH </p>
                             <div className="clearfix">
                                 <p className="float-left m-0" style={{ fontSize: "24px", fontWeight: "bold" }}>$ 5,600.00</p>
-                                <i class="bi bi-wallet-fill float-right" style={{ fontSize: "24px" }}></i>
+                                <i className="bi bi-wallet-fill float-right" style={{ fontSize: "24px" }}></i>
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@ class Dashboard extends Component {
                             <p style={{ fontSize: "14px", color: "grey" }}>SALES CYMBALS LAST MONTH</p>
                             <div className="clearfix">
                                 <p className="float-left m-0" style={{ fontSize: "24px", fontWeight: "bold" }}>$ 12,600.00</p>
-                                <i class="bi bi-wallet-fill float-right" style={{ fontSize: "24px" }}></i>
+                                <i className="bi bi-wallet-fill float-right" style={{ fontSize: "24px" }}></i>
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@ class Dashboard extends Component {
                             <p style={{ fontSize: "14px", color: "grey" }}>SALES CYMBALS THIS YEAR</p>
                             <div className="clearfix">
                                 <p className="float-left m-0" style={{ fontSize: "24px", fontWeight: "bold" }}>$ 152,600.00</p>
-                                <i class="bi bi-wallet-fill float-right" style={{ fontSize: "24px" }}></i>
+                                <i className="bi bi-wallet-fill float-right" style={{ fontSize: "24px" }}></i>
                             </div>
                         </div>
                     </div>
