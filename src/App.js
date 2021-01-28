@@ -14,7 +14,7 @@ function App() {
         <Router>
             <NavBar />
             <Wrapper>
-                <div className="row" style={{ backgroundColor: "#e6e6e6", marginTop: "65px", paddingTop: "60px", height: "100vh" }}>
+                <div className="row">
                     <div className="col-2 pr-0" style={{ minWidth: "200px" }}>
                         <NavBarLeft />
                     </div>
