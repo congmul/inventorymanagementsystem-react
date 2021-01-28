@@ -7,7 +7,7 @@ import NavBarLeft from './components/NavBarLeft'
 import Dashboard from './pages/Dashboard'
 import Cymbals from './pages/Cymbals'
 import NewCymbalCSV from './pages/NewCymbalCSV'
-// import Frame from './components/Frame'
+import NewCymbalPackCSV from './pages/NewCymbalPackCSV'
 
 function App() {
     return (
@@ -22,6 +22,7 @@ function App() {
                         <Route exact path="/" component={Dashboard} />
                         <Route path="/cymbals" component={Cymbals} />
                         <Route path="/NewCymbalCSV" component={NewCymbalCSV} />
+                        <Route path="/NewPackCSV" component={NewCymbalPackCSV} />
                     </div>
                 </div>
             </Wrapper>
