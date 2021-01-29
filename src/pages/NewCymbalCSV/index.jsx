@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Table, Form, Row, Button } from 'react-bootstrap';
+import { Table, Row, Button } from 'react-bootstrap';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
 
@@ -20,6 +20,10 @@ export default function NewCymbalCSV() {
     const processData = dataString => {
         const dataStringLines = dataString.split(/\r\n|\n/);
         const headers = dataStringLines[0].split(/,(?![^"]*"(?:(?:[^"]*"){2})*[^"]*$)/);
+
+        console.log("headers");
+        console.log(headers);
+        // TODO: If 9 > headers.length > 9, return error and stop processing - This numbers of columns are NINE (category / type / size / description / code / qty / ebay_price / website_price / group_code)
 
         const list = [];
         for (let i = 1; i < dataStringLines.length; i++) {
@@ -93,21 +97,23 @@ export default function NewCymbalCSV() {
     function handleUploadLists(e) {
         e.preventDefault()
 
-         //TODO:Add Data to DB by using list
+        //TODO:Add Data to DB by using list
         console.log(listsCSV);
         alert("The lists are stored to DB");
     }
 
     return (
-        <div className="shadow ml-5 mr-3 mb-4 p-5 bg-white rounded" style={{width:"900px"}}>
+        <div className="shadow ml-5 mr-3 mb-4 p-5 bg-white rounded" style={{ width: "900px" }}>
             <Row className="mb-3">
                 <h4>Upload your CSV File for Cymbals</h4>
             </Row>
 
             <Row className="mb-5 ml-2">
-                    <input type="file" name="File Upload" accept=".csv, .xlsx, .xls" className="btn" onChange={handleFileUpload} />
-                    <Button style={uploadButtonDisplay} onClick={handleUploadLists}>Upload Lists to DB</Button>
-                    <DataTable title="Lists in CSV file" pagination highlightOnHover columns={columns} data={data} />
+                <input type="file" name="File Upload" accept=".csv, .xlsx, .xls" className="btn" onChange={handleFileUpload} />
+                <Button style={uploadButtonDisplay} onClick={handleUploadLists}>Upload Lists to DB</Button>
+            </Row>
+            <Row className="mt-5">
+                <DataTable pagination highlightOnHover columns={columns} data={data} />
             </Row>
             <Row>
                 <div style={tableDisplay}>
