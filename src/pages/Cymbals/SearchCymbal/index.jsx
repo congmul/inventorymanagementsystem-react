@@ -21,8 +21,8 @@ export default function SearchCymbal() {
         const searchresult = [
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0902",
@@ -32,8 +32,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0753",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0901",
@@ -43,8 +43,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0903",
@@ -54,8 +54,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0904",
@@ -65,8 +65,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0905",
@@ -76,8 +76,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0906",
@@ -87,8 +87,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0907",
@@ -98,8 +98,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0908",
@@ -109,8 +109,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0909",
@@ -120,8 +120,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0910",
@@ -131,8 +131,8 @@ export default function SearchCymbal() {
             },
             {
                 packageCode: "k0800",
-                category01: "zildjian",
-                category02: "crash",
+                category: "zildjian",
+                type: "crash",
                 size: "16",
                 description: "Dark Thin",
                 code: "k0911",
@@ -206,8 +206,8 @@ export default function SearchCymbal() {
                     <thead>
                         <tr>
                             <th>Package Code</th>
-                            <th>Category01</th>
-                            <th>Category02</th>
+                            <th>category</th>
+                            <th>type</th>
                             <th>Size</th>
                             <th>Description</th>
                             <th>Code</th>
@@ -219,8 +219,8 @@ export default function SearchCymbal() {
                     <tbody>
                         {tbody.map(cymbal => (<tr key={cymbal.packageCode + "_" + cymbal.code}>
                             <td className="packageCode" data-id={cymbal.packageCode}><Button variant="secondary" size="sm" onClick={handlePakageData}>{cymbal.packageCode.toUpperCase()}</Button></td>
-                            <td>{cymbal.category01}</td>
-                            <td>{cymbal.category02}</td>
+                            <td>{cymbal.category}</td>
+                            <td>{cymbal.type}</td>
                             <td>{cymbal.size}</td>
                             <td>{cymbal.description}</td>
                             <td>{cymbal.code.toUpperCase()}</td>
@@ -256,8 +256,8 @@ export default function SearchCymbal() {
                                 <td>K Custom hybrid</td>
                                 <td>hi-hats</td>
                                 <td>14 inch</td>
-                                <td contenteditable='true'>$ 307</td>
-                                <td contenteditable='true'>$ 307</td>
+                                <td contentEditable='true'>$ 307</td>
+                                <td contentEditable='true'>$ 307</td>
                             </tr>
                             <tr>
                                 <td>K1224</td>
@@ -300,14 +300,14 @@ export default function SearchCymbal() {
                             <tr>
                                 <td>ebay :</td>
                                 <td>$ 1095</td>
-                                <td contenteditable='true'>12%</td>
+                                <td contentEditable='true'>12%</td>
                                 <td>$ 955.25</td>
                                 <td>73.45%</td>
                             </tr>
                             <tr>
                                 <td>website :</td>
                                 <td>$ 900</td>
-                                <td contenteditable='true'>4%</td>
+                                <td contentEditable='true'>4%</td>
                                 <td>$ 955.25</td>
                                 <td>55.45%</td>
                             </tr>
