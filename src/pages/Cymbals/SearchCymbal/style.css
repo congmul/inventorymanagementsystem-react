@@ -1,10 +1,18 @@
 .cymbalSearch{
     width: 100%;
 }
+
+thead tr th {
+    text-align: center;  
+}
 tbody tr td {
     text-align: center;  
 }
 
 .packageCode{
     cursor: pointer;
+}
+
+.modalCloseButton{
+    text-align: right; 
 }

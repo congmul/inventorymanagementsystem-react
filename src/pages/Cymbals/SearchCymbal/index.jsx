@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Table, Button, Form, Col } from 'react-bootstrap';
+import { Table, Button, Form, Col, Modal } from 'react-bootstrap';
 
 import './style.css';
 
@@ -7,6 +7,9 @@ export default function SearchCymbal() {
 
     const [tableDisplay, setTableDisplay] = useState({ display: "none" }); // Handble state for Table display or not
     const [tbody, setTbody] = useState([]); // Handble state for tbody
+    const [show, setShow] = useState(false); // For modal
+    const [packageID, setPackageID] = useState();
+
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -28,12 +31,12 @@ export default function SearchCymbal() {
                 websitePrice: "189",
             },
             {
-                packageCode: "k0800",
+                packageCode: "k0753",
                 category01: "zildjian",
                 category02: "crash",
                 size: "16",
                 description: "Dark Thin",
-                code: "k0902",
+                code: "k0901",
                 qty: "3",
                 eBayPrice: "169",
                 websitePrice: "189",
@@ -44,7 +47,7 @@ export default function SearchCymbal() {
                 category02: "crash",
                 size: "16",
                 description: "Dark Thin",
-                code: "k0902",
+                code: "k0903",
                 qty: "3",
                 eBayPrice: "169",
                 websitePrice: "189",
@@ -55,7 +58,84 @@ export default function SearchCymbal() {
                 category02: "crash",
                 size: "16",
                 description: "Dark Thin",
-                code: "k0902",
+                code: "k0904",
+                qty: "3",
+                eBayPrice: "169",
+                websitePrice: "189",
+            },
+            {
+                packageCode: "k0800",
+                category01: "zildjian",
+                category02: "crash",
+                size: "16",
+                description: "Dark Thin",
+                code: "k0905",
+                qty: "3",
+                eBayPrice: "169",
+                websitePrice: "189",
+            },
+            {
+                packageCode: "k0800",
+                category01: "zildjian",
+                category02: "crash",
+                size: "16",
+                description: "Dark Thin",
+                code: "k0906",
+                qty: "3",
+                eBayPrice: "169",
+                websitePrice: "189",
+            },
+            {
+                packageCode: "k0800",
+                category01: "zildjian",
+                category02: "crash",
+                size: "16",
+                description: "Dark Thin",
+                code: "k0907",
+                qty: "3",
+                eBayPrice: "169",
+                websitePrice: "189",
+            },
+            {
+                packageCode: "k0800",
+                category01: "zildjian",
+                category02: "crash",
+                size: "16",
+                description: "Dark Thin",
+                code: "k0908",
+                qty: "3",
+                eBayPrice: "169",
+                websitePrice: "189",
+            },
+            {
+                packageCode: "k0800",
+                category01: "zildjian",
+                category02: "crash",
+                size: "16",
+                description: "Dark Thin",
+                code: "k0909",
+                qty: "3",
+                eBayPrice: "169",
+                websitePrice: "189",
+            },
+            {
+                packageCode: "k0800",
+                category01: "zildjian",
+                category02: "crash",
+                size: "16",
+                description: "Dark Thin",
+                code: "k0910",
+                qty: "3",
+                eBayPrice: "169",
+                websitePrice: "189",
+            },
+            {
+                packageCode: "k0800",
+                category01: "zildjian",
+                category02: "crash",
+                size: "16",
+                description: "Dark Thin",
+                code: "k0911",
                 qty: "3",
                 eBayPrice: "169",
                 websitePrice: "189",
@@ -71,7 +151,11 @@ export default function SearchCymbal() {
 
     function handlePakageData(e) {
         console.log(e.target.innerText);
+        setPackageID(e.target.innerText);
+        setShow(true);
     }
+
+    const handleClose = () => setShow(false);
 
     return (
         <div className="shadow ml-5 mr-3 mb-4 p-3 bg-white rounded cymbalSearch">
@@ -133,8 +217,8 @@ export default function SearchCymbal() {
                         </tr>
                     </thead>
                     <tbody>
-                        {tbody.map(cymbal => (<tr>
-                            <td class="packageCode" data-id={cymbal.packageCode} onClick={handlePakageData}>{cymbal.packageCode.toUpperCase()}</td>
+                        {tbody.map(cymbal => (<tr key={cymbal.packageCode + "_" + cymbal.code}>
+                            <td className="packageCode" data-id={cymbal.packageCode}><Button variant="secondary" size="sm" onClick={handlePakageData}>{cymbal.packageCode.toUpperCase()}</Button></td>
                             <td>{cymbal.category01}</td>
                             <td>{cymbal.category02}</td>
                             <td>{cymbal.size}</td>
@@ -148,6 +232,92 @@ export default function SearchCymbal() {
                     </tbody>
                 </Table>
             </div>
+
+            <Modal size="lg" show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>{packageID} | {packageID} | {packageID}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    packageID : {packageID}
+                    <Table hover className="mt-3">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>eBay Price</th>
+                                <th>Website Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>K1224</td>
+                                <td>K Custom hybrid</td>
+                                <td>hi-hats</td>
+                                <td>14 inch</td>
+                                <td>$ 307</td>
+                                <td>$ 307</td>
+                            </tr>
+                            <tr>
+                                <td>K1224</td>
+                                <td>K Custom hybrid</td>
+                                <td>hi-hats</td>
+                                <td>14 inch</td>
+                                <td>$ 307</td>
+                                <td>$ 307</td>
+                            </tr>
+                            <tr>
+                                <td>K1224</td>
+                                <td>K Custom hybrid</td>
+                                <td>hi-hats</td>
+                                <td>14 inch</td>
+                                <td>$ 307</td>
+                                <td>$ 307</td>
+                            </tr>
+                            <tr>
+                                <td>K1224</td>
+                                <td>K Custom hybrid</td>
+                                <td>hi-hats</td>
+                                <td>14 inch</td>
+                                <td>$ 307</td>
+                                <td>$ 307</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+
+                    <Table hover className="mt-5">
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Gross</th>
+                                <th>Fee</th>
+                                <th>Net</th>
+                                <th>Margin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ebay :</td>
+                                <td>$ 1095</td>
+                                <td>12%</td>
+                                <td>$ 955.25</td>
+                                <td>73.45%</td>
+                            </tr>
+                            <tr>
+                                <td>website :</td>
+                                <td>$ 900</td>
+                                <td>4%</td>
+                                <td>$ 955.25</td>
+                                <td>55.45%</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </Modal.Body>
+                <Modal.Body className="modalCloseButton">
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }
