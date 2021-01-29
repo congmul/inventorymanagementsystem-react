@@ -256,8 +256,8 @@ export default function SearchCymbal() {
                                 <td>K Custom hybrid</td>
                                 <td>hi-hats</td>
                                 <td>14 inch</td>
-                                <td>$ 307</td>
-                                <td>$ 307</td>
+                                <td contenteditable='true'>$ 307</td>
+                                <td contenteditable='true'>$ 307</td>
                             </tr>
                             <tr>
                                 <td>K1224</td>
@@ -300,14 +300,14 @@ export default function SearchCymbal() {
                             <tr>
                                 <td>ebay :</td>
                                 <td>$ 1095</td>
-                                <td>12%</td>
+                                <td contenteditable='true'>12%</td>
                                 <td>$ 955.25</td>
                                 <td>73.45%</td>
                             </tr>
                             <tr>
                                 <td>website :</td>
                                 <td>$ 900</td>
-                                <td>4%</td>
+                                <td contenteditable='true'>4%</td>
                                 <td>$ 955.25</td>
                                 <td>55.45%</td>
                             </tr>
