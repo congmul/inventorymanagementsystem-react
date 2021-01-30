@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function NavLeft() {
     return (
-        <div className="navLink container ml-2" style={{fontSize:"20px", backgroundColor: "#e6e6e6"}}>
+        <div className="navLink container ml-2 position-fixed" style={{fontSize:"20px", backgroundColor: "#e6e6e6"}}>
             <Link to="/">
                 <p className="leftMenuLetter"><i className="bi bi-house-fill mr-2"></i> Dashboard</p>
             </Link>
