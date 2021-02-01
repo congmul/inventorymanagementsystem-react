@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-let db = require("../models/Cymbals");
+let db = require("../models/Orders.js");
 
 mongoose.connect("mongodb://localhost/wavemgDB", {
   useNewUrlParser: true,
@@ -8,17 +8,15 @@ mongoose.connect("mongodb://localhost/wavemgDB", {
 
 let cymbalSeed = [
   {
-    category: "K0854",
-    description: "K custom"
-  },
-  {
-    category: "K0834",
-    description: "K Dark"
-  },
-  {
-    category: "K0154",
-    description: "A custom"
-  },
+    sku: "K0823",
+    date: "10/30/17",
+    product: "cymbal",
+    price: 175,
+    category: "zildjian",
+    buyer: "diyweekend",
+    description: "K custom",
+    shipped: true
+  }
 ];
 
 // db.Cymbals.deleteMany({})
