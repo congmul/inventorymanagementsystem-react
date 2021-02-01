@@ -39,7 +39,7 @@ export default function Orders() {
     const [listsCSV, setListsCSV] = useState([]);
     
     useEffect(() => {
-        API.getData("http://localhost/4000/orders").then((res) => {
+        API.getData("http://localhost:4000/orders").then((res) => {
             console.log(res);
         })
     });

@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const Orders = require("../models/Orders.js");
+const db = require("../models");
 
 router.get("/orders", (req, res) => {
     console.log("Route Orders in Backend")
-    Orders.find({})
+    db.Orders.find({})
     .then(orders =>{
         res.json(orders);
     })
@@ -13,7 +13,7 @@ router.get("/orders", (req, res) => {
 })
 
 router.post("/api/orders/bulk", (req, res) => {
-    Orders.insertMany(req.body)
+    db.Orders.insertMany(req.body)
     .then(data =>{
         res.json(data);
     })

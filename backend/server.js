@@ -6,7 +6,8 @@ const cors = require('cors');
 
 const PORT = process.env.PORT || 4000;
 
-const WavemgDB = require('./models/Orders.js');
+const db = require("./models");
+
 const app = express();
 
 app.use(logger("dev"));
@@ -18,7 +19,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wavemg", 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wavemgDB", 
 { 
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
@@ -31,8 +32,9 @@ mongoose.connection.once('open', function() {
 
 app.get("/", (req, res) => {
     console.log("Get Server")
-    WavemgDB.find({})
+    db.Orders.find({})
     .then(res => {
+      console.log("TEXT")
       res.json(res);
     })
     .catch(err => {

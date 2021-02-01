@@ -1,10 +1,16 @@
 import React, { useEffect } from 'react'
+import API from "../../utils/API";
 
 function Dashboard() {
     useEffect(() => {
         document.title = `Inventory Management System - Wavemg`;
     })
 
+    useEffect(() => {
+        API.getData("http://localhost:4000/orders").then((res) => {
+            console.log(res);
+        })
+    });
 
     return (
         <div className="container-fluid">
