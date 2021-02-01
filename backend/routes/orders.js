@@ -13,11 +13,13 @@ router.get("/orders", (req, res) => {
 })
 
 router.post("/api/orders/bulk", (req, res) => {
+    console.log(req.body);
     db.Orders.insertMany(req.body)
     .then(data =>{
         res.json(data);
     })
     .catch(err => {
+        console.log(err);
         res.status(404).json(err);
     })
 })

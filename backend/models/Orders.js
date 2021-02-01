@@ -32,11 +32,11 @@ const OrdersSchema = new Schema({
     required: "buyer is Required"
   },
   shipped: {
-    type: Boolean,
+    type: String,
     default:false
   },
   return: {
-    type: Boolean,
+    type: String,
     default:false
   }
 },

@@ -12,27 +12,27 @@ export default function Orders() {
 
     const [tableDisplay, setTableDisplay] = useState({ display: "block" }); // Handble state for Table display or not
     const [uploadButtonDisplay, setUploadButtonDisplay] = useState({ display: "none" }); // Handble state for Upload Button display or not
-    const [cymbalOrders, setCymbalOrders] = useState(
-        [{
-            year: "",
-            month: "",
-            product: "",
-            code: "",
-            date: "",
-            buyer: "",
-            description: "",
-            price:0,
-            selling:0,
-            return: false,
-            shipped: true,
-          }]
-    )
-    const [cymbalColumnOrders, setCymbalColumnOrders] = useState(
-        [{
-            name: "",
-            selector: "",
-          }]
-    )
+    // const [cymbalOrders, setCymbalOrders] = useState(
+    //     [{
+    //         year: "",
+    //         month: "",
+    //         product: "",
+    //         code: "",
+    //         date: "",
+    //         buyer: "",
+    //         description: "",
+    //         price:0,
+    //         selling:0,
+    //         return: false,
+    //         shipped: true,
+    //       }]
+    // )
+    // const [cymbalColumnOrders, setCymbalColumnOrders] = useState(
+    //     [{
+    //         name: "",
+    //         selector: "",
+    //       }]
+    // )
     const [columns, setColumns] = useState([]);
     const [data, setData] = useState([]);
 
@@ -91,20 +91,14 @@ export default function Orders() {
         //Add columns style
         columns[0]["width"] = "80px";
         columns[0]["sortable"] = true;
-        columns[1]["width"] = "80px";
+        columns[1]["width"] = "100px";
         columns[2]["width"] = "100px";
         columns[3]["width"] = "100px";
         columns[4]["width"] = "100px";
         columns[5]["width"] = "100px";
+        columns[6]["width"] = "100px";
         columns[7]["width"] = "100px";
         columns[8]["width"] = "100px";
-        columns[9]["width"] = "100px";
-        columns[10]["width"] = "100px";
-        // setCymbalOrders(list);
-        // setCymbalColumnOrders(columns);
-        // cymbalColumnOrders[0]["width"] = "100px"
-        // console.log(cymbalOrders);
-        // console.log(cymbalColumnOrders);
         setData(list);
         setColumns(columns);
     }
@@ -134,8 +128,13 @@ export default function Orders() {
     function handleUploadLists(e) {
         e.preventDefault()
 
-        //TODO:Add Data to DB by using list
         console.log(listsCSV);
+        API.postDate("http://localhost:4000/api/orders/bulk", listsCSV)
+        .then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        })
         alert("The lists are stored to DB");
     }
 
