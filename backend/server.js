@@ -1,8 +1,8 @@
 const express = require('express');
 const logger = require("morgan");
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+// const bodyParser = require('body-parser');
+// const cors = require('cors');
 
 const PORT = process.env.PORT || 3000;
 
@@ -10,8 +10,8 @@ const WavemgDB = require('./db/schema.js');
 const app = express();
 
 app.use(logger("dev"));
-app.use(cors());
-app.use(bodyParser.json());
+// app.use(cors());
+// app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -40,6 +40,8 @@ app.get("/", (req, res) => {
     });
 });
 
+// routes
+app.use(require("./routes/orders.js"));
 
 app.listen(PORT, () => {
     console.log("Server is running on Port: " + PORT);
