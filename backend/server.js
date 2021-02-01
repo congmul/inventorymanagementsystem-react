@@ -2,15 +2,15 @@ const express = require('express');
 const logger = require("morgan");
 const mongoose = require('mongoose');
 // const bodyParser = require('body-parser');
-// const cors = require('cors');
+const cors = require('cors');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
-const WavemgDB = require('./db/schema.js');
+const WavemgDB = require('./models/Orders.js');
 const app = express();
 
 app.use(logger("dev"));
-// app.use(cors());
+app.use(cors());
 // app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect('process.env.MONGODB_URI || "mongodb://localhost/wavemg', 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wavemg", 
 { 
     useNewUrlParser: true, 
     useUnifiedTopology: true, 

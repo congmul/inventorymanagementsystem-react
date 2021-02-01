@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Orders = require("../models/Orders.js");
 
 router.get("/orders", (req, res) => {
+    console.log("Route Orders in Backend")
     Orders.find({})
     .then(orders =>{
         res.json(orders);

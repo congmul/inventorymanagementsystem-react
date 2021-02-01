@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Table, Row, Button } from 'react-bootstrap';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
+import API from "../../utils/API";
 // import OrdersContext from '../../utils/OrdersContext';
 
 import './style.css';
@@ -36,7 +37,12 @@ export default function Orders() {
     const [data, setData] = useState([]);
 
     const [listsCSV, setListsCSV] = useState([]);
-
+    
+    useEffect(() => {
+        API.getData("http://localhost/4000/orders").then((res) => {
+            console.log(res);
+        })
+    });
 
     // process CSV data
     const processData = dataString => {
