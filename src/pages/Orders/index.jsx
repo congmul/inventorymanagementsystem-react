@@ -2,14 +2,36 @@ import React, { useState } from 'react'
 import { Table, Row, Button } from 'react-bootstrap';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
+// import OrdersContext from '../../utils/OrdersContext';
 
 import './style.css';
 
-export default function NewCymbalPackCSV() {
-    document.title = `NewCymbalPackCSV - IMS - Wavemg`;
+export default function Orders() {
+    document.title = `Orders - IMS - Wavemg`;
 
     const [tableDisplay, setTableDisplay] = useState({ display: "block" }); // Handble state for Table display or not
     const [uploadButtonDisplay, setUploadButtonDisplay] = useState({ display: "none" }); // Handble state for Upload Button display or not
+    const [cymbalOrders, setCymbalOrders] = useState(
+        [{
+            year: "",
+            month: "",
+            product: "",
+            code: "",
+            date: "",
+            buyer: "",
+            description: "",
+            price:0,
+            selling:0,
+            return: false,
+            shipped: true,
+          }]
+    )
+    const [cymbalColumnOrders, setCymbalColumnOrders] = useState(
+        [{
+            name: "",
+            selector: "",
+          }]
+    )
     const [columns, setColumns] = useState([]);
     const [data, setData] = useState([]);
 
@@ -20,9 +42,10 @@ export default function NewCymbalPackCSV() {
     const processData = dataString => {
         const dataStringLines = dataString.split(/\r\n|\n/);
         const headers = dataStringLines[0].split(/,(?![^"]*"(?:(?:[^"]*"){2})*[^"]*$)/);
-        // console.log("headers");
-        // console.log(headers);
-        // TODO: If headers.length > 4, return error and stop processing - This numbers of columns are four (category / description / group_code / dealer_price)
+
+        console.log("headers");
+        console.log(headers);
+        // TODO: If 9 > headers.length > 9, return error and stop processing - This numbers of columns are NINE (category / type / size / description / code / qty / ebay_price / website_price / group_code)
 
         const list = [];
         for (let i = 1; i < dataStringLines.length; i++) {
@@ -54,10 +77,28 @@ export default function NewCymbalPackCSV() {
             name: c,
             selector: c,
         }));
-        
+
         //Store lists of CSV to ListsCSV state to use it with UploadToDB button
         setListsCSV(list);
 
+
+        //Add columns style
+        columns[0]["width"] = "80px";
+        columns[0]["sortable"] = true;
+        columns[1]["width"] = "80px";
+        columns[2]["width"] = "100px";
+        columns[3]["width"] = "100px";
+        columns[4]["width"] = "100px";
+        columns[5]["width"] = "100px";
+        columns[7]["width"] = "100px";
+        columns[8]["width"] = "100px";
+        columns[9]["width"] = "100px";
+        columns[10]["width"] = "100px";
+        // setCymbalOrders(list);
+        // setCymbalColumnOrders(columns);
+        // cymbalColumnOrders[0]["width"] = "100px"
+        // console.log(cymbalOrders);
+        // console.log(cymbalColumnOrders);
         setData(list);
         setColumns(columns);
     }
@@ -87,52 +128,23 @@ export default function NewCymbalPackCSV() {
     function handleUploadLists(e) {
         e.preventDefault()
 
-         //TODO:Add Data to DB by using list
+        //TODO:Add Data to DB by using list
         console.log(listsCSV);
         alert("The lists are stored to DB");
     }
 
     return (
-        <div className="shadow ml-5 mr-3 mb-4 p-5 bg-white rounded" style={{width:"900px"}}>
+        <div className="shadow ml-5 mr-3 mb-4 p-5 bg-white rounded" style={{ width: "900px" }}>
             <Row className="mb-3">
-                <h4>Upload your CSV File for Packages</h4>
+                <h4>Upload your CSV File</h4>
             </Row>
 
             <Row className="mb-5 ml-2">
-                    <input type="file" name="File Upload" accept=".csv, .xlsx, .xls" className="btn" onChange={handleFileUpload} />
-                    <Button style={uploadButtonDisplay} onClick={handleUploadLists}>Upload Lists to DB</Button>
+                <input type="file" name="File Upload" accept=".csv, .xlsx, .xls" className="btn" onChange={handleFileUpload} />
+                <Button style={uploadButtonDisplay} onClick={handleUploadLists}>Upload Lists to DB</Button>
             </Row>
             <Row className="mt-5">
                 <DataTable pagination highlightOnHover columns={columns} data={data} />
-            </Row>
-            <Row>
-                <div style={tableDisplay}>
-                    <h5 className="text-secondary">Document Template</h5>
-                    <Table hover>
-                        <thead>
-                            <tr>
-                                <th>category</th>
-                                <th>description</th>
-                                <th>packageCode</th>
-                                <th>dealer_price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Zildjian</td>
-                                <td>K pack</td>
-                                <td>K0800</td>
-                                <td>655</td>
-                            </tr>
-                            <tr>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </div>
             </Row>
         </div>
     )

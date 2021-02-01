@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard'
 import Cymbals from './pages/Cymbals'
 import NewCymbalCSV from './pages/NewCymbalCSV'
 import NewCymbalPackCSV from './pages/NewCymbalPackCSV'
+import Orders from './pages/Orders'
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                         <Route path="/cymbals" component={Cymbals} />
                         <Route path="/NewCymbalCSV" component={NewCymbalCSV} />
                         <Route path="/NewPackCSV" component={NewCymbalPackCSV} />
+                        <Route path="/orders" component={Orders} />
                     </div>
                 </div>
             </Wrapper>
