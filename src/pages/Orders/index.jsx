@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Table, Row, Button } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Row, Button } from 'react-bootstrap';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
 import API from "../../utils/API";
@@ -10,7 +10,7 @@ import './style.css';
 export default function Orders() {
     document.title = `Orders - IMS - Wavemg`;
 
-    const [tableDisplay, setTableDisplay] = useState({ display: "block" }); // Handble state for Table display or not
+    // const [tableDisplay, setTableDisplay] = useState({ display: "block" }); // Handble state for Table display or not
     const [uploadButtonDisplay, setUploadButtonDisplay] = useState({ display: "none" }); // Handble state for Upload Button display or not
     // const [cymbalOrders, setCymbalOrders] = useState(
     //     [{
@@ -38,11 +38,11 @@ export default function Orders() {
 
     const [listsCSV, setListsCSV] = useState([]);
     
-    useEffect(() => {
-        API.getData("http://localhost:4000/orders").then((res) => {
-            console.log(res);
-        })
-    });
+    // useEffect(() => {
+    //     API.getData("http://localhost:4000/orders").then((res) => {
+    //         console.log(res);
+    //     })
+    // });
 
     // process CSV data
     const processData = dataString => {
@@ -105,7 +105,7 @@ export default function Orders() {
     // handle file upload
     function handleFileUpload(e) {
         setUploadButtonDisplay({ display: "block" })
-        setTableDisplay({ display: "none" });
+        // setTableDisplay({ display: "none" });
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onload = (evt) => {
