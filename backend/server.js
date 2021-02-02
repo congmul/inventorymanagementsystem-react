@@ -44,6 +44,7 @@ app.get("/", (req, res) => {
 
 // routes
 app.use(require("./routes/orders.js"));
+app.use(require("./routes/products.js"));
 
 app.listen(PORT, () => {
     console.log("Server is running on Port: " + PORT);

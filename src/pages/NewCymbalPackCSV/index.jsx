@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Table, Row, Button } from 'react-bootstrap';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
+import API from '../../utils/API'
 
 import './style.css';
 
@@ -87,7 +88,7 @@ export default function NewCymbalPackCSV() {
     function handleUploadLists(e) {
         e.preventDefault()
 
-         //TODO:Add Data to DB by using list
+         API.postDate("http://localhost:4000/api/product/newPack/bulk", listsCSV)
         console.log(listsCSV);
         alert("The lists are stored to DB");
     }
@@ -114,7 +115,8 @@ export default function NewCymbalPackCSV() {
                                 <th>category</th>
                                 <th>description</th>
                                 <th>packageCode</th>
-                                <th>dealer_price</th>
+                                <th>dealerPrice</th>
+                                <th>product</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,6 +125,7 @@ export default function NewCymbalPackCSV() {
                                 <td>K pack</td>
                                 <td>K0800</td>
                                 <td>655</td>
+                                <td>cymbalPack</td>
                             </tr>
                             <tr>
                                 <td>...</td>

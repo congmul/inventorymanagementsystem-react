@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Modal, Button, Form, Col } from 'react-bootstrap';
+import API from '../../../utils/API'
 
 export default function AddCymbalPack() {
 
@@ -8,15 +9,25 @@ export default function AddCymbalPack() {
 
   const handleAdd = (e) => {
     e.preventDefault()
+
+    let newPack = {
+      product: "",
+      category: "",
+      description: "",
+      packageCode: "",
+      dealerPrice: "",
+    }
+
     console.log("handleAdd Func");
-    console.log(e.target[0].value);
-    console.log(e.target[1].value);
-    console.log(e.target[2].value);
-    console.log(e.target[3].value);
+    newPack["product"] = "cymbalPack";
+    newPack["category"] = e.target[0].value;
+    newPack["description"] = e.target[1].value;
+    newPack["packageCode"] = e.target[2].value;
+    newPack["dealerPrice"] = e.target[3].value;
+
     let answer = window.confirm(`Do you want to add ${e.target[1].value}?`);
     if (answer) {
-      // TODO: Add fetch to POST new cymbal
-
+      API.postDate("http://localhost:4000/api/product/newPack", newPack)
       setShow(false);
     }
   }

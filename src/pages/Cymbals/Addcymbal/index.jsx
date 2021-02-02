@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Modal, Button, Form, Col } from 'react-bootstrap';
+import API from '../../../utils/API'
 
 export default function Addcymbal() {
     
@@ -8,17 +9,33 @@ export default function Addcymbal() {
     
       const handleAdd = (e) => {
         e.preventDefault()
+        let newCymbal = {
+          category: "",
+          type: "",
+          size: "",
+          description: "",
+          packageCode: "",
+          sku: "",
+          qty: "",
+          ebayPrice: "",
+          websitePrice: "",
+        }
         console.log("handleAdd Func");
-        console.log(e.target[0].value);
-        console.log(e.target[1].value);
-        console.log(e.target[2].value);
-        console.log(e.target[3].value);
-        console.log(e.target[4].value);
-        console.log(e.target[5].value);
+        newCymbal["category"] = e.target[0].value;
+        newCymbal["type"] = e.target[1].value;
+        newCymbal["size"] = e.target[2].value;
+        newCymbal["description"] = e.target[3].value;
+        newCymbal["packageCode"] = e.target[4].value;
+        newCymbal["sku"] = e.target[5].value;
+        newCymbal["qty"] = e.target[6].value;
+        newCymbal["ebayPrice"] = e.target[7].value;
+        newCymbal["websitePrice"] = e.target[8].value;
+        newCymbal["product"] = "cymbal";
+
+        console.log(newCymbal);
         let answer = window.confirm(`Do you want to add ${e.target[3].value}?`);
         if (answer) {
-          // TODO: Add fetch to POST new cymbal
-          
+          API.postDate("http://localhost:4000/api/product", newCymbal)
           setShow(false);
         }
       }
@@ -47,14 +64,14 @@ export default function Addcymbal() {
               <Form onSubmit={handleAdd}>
                 <Form.Row>
                   <Form.Group as={Col} controlId="formNewCymbalCategory01">
-                    <Form.Label>Category01</Form.Label>
+                    <Form.Label>Category</Form.Label>
                     <Form.Control as="select" defaultValue="Choose your option">
                       <option>Zildjian</option>
                       <option>Sabian</option>
                     </Form.Control>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formNewCymbalCategory02">
-                    <Form.Label>Category02</Form.Label>
+                    <Form.Label>Type</Form.Label>
                     <Form.Control as="select" defaultValue="Choose your option">
                       <option>Ride</option>
                       <option>HiHats</option>
@@ -65,14 +82,14 @@ export default function Addcymbal() {
                   <Form.Group as={Col} controlId="formNewCymbalSize">
                     <Form.Label>Size</Form.Label>
                     <Form.Control as="select" defaultValue="Choose your option">
-                      <option>14 inch</option>
-                      <option>15 inch</option>
-                      <option>16 inch</option>
-                      <option>17 inch</option>
-                      <option>18 inch</option>
-                      <option>19 inch</option>
-                      <option>20 inch</option>
-                      <option>21 inch</option>
+                      <option value="14">14 inch</option>
+                      <option value="15">15 inch</option>
+                      <option value="16">16 inch</option>
+                      <option value="17">17 inch</option>
+                      <option value="18">18 inch</option>
+                      <option value="19">19 inch</option>
+                      <option value="20">20 inch</option>
+                      <option value="21">21 inch</option>
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
@@ -83,13 +100,29 @@ export default function Addcymbal() {
                 <Form.Group controlId="formNewCymbalGroupCode">
                   <Form.Label>GroupCode</Form.Label>
                   <Form.Control as="select" defaultValue="">
-                    <option>K custom</option>
-                    <option>K custom</option>
+                    <option>K0800</option>
+                    <option>KCH390</option>
+                    <option>KCD900</option>
+                    <option>A20579-11</option>
+                    <option>A391</option>
+                    <option>KCSP4681</option>
+                    <option>K0801C</option>
+                    <option>KC0801W</option>
+                    <option>AC0801G</option>
+                    <option>A0801R</option>
+                    <option>S390</option>
+                    <option>KS5791</option>
+                    <option>15005XEBP</option>
+                    <option>XSR5005GB</option>
+                    <option>SBR5003G</option>
+                    <option>25005XC-PWB</option>
+                    <option>15005XCNP</option>
+                    <option>15005XTMB</option>
                   </Form.Control>
                 </Form.Group>
                 <Form.Row>
                   <Form.Group as={Col} controlId="formNewCymbalItemCode">
-                    <Form.Label>Item Code</Form.Label>
+                    <Form.Label>SKU</Form.Label>
                     <Form.Control />
                   </Form.Group>
                   <Form.Group as={Col} controlId="formNewCymbalQty">
