@@ -13,7 +13,7 @@ function NavBar() {
     return(
         <div className="row shadow rounded m-0 p-3 bg-white" style={style}>
             <Link to ="/"><img src={Logo} className="d-flex" width="35px" alt="brand" /></Link>
-            <div className="pl-3" style={{fontWeight: "bold", fontSize: "20px"}}>Inventory Management System</div>
+            <div className="pl-3" style={{fontWeight: "bold", fontSize: "20px"}}>WAVEMG - Inventory Management System</div>
         </div>
     )
 }

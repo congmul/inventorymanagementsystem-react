@@ -131,6 +131,24 @@ function Dashboard() {
                             data={stateLine}
                             height={80}
                             options={{
+                                scales: {
+                                    xAxes: [{
+                                        // borderDash: [2, 5]
+                                    }],
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: "Cymbal Sales ( $ )",
+                                            fontColor: "red"
+                                          },
+                                          stacked: true,
+                                          ticks: {
+                                             min: 0,
+                                             max: 35000,
+                                             stepSize: 7000,
+                                         }
+                                    }]
+                                }
                             }}
                         />
                         <Form onChange={handleFormOnChart} className="formOnChart">
