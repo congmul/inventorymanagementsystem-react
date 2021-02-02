@@ -23,51 +23,59 @@ function Dashboard() {
             let thisMonthCymbalSales = 0;
             let lastMonthCymbalSales = 0;
             let thisYearCymbalSales = 0;
-            let thisMonth = new Date().getMonth();
+            let thisMonth = new Date().getMonth() + 1;
+            console.log("thisMonth");
+            console.log(new Date().getMonth() + 1);
             let thisYear = new Date().getFullYear();
             let lastMonth;
-            let lastYear = thisYear - 1;
+            let lastMonthYear = thisYear;
             if (thisMonth === 1) {
                 lastMonth = 12;
+                lastMonthYear = thisYear - 1;
             } else {
                 lastMonth = thisMonth - 1;
             }
-            console.log("seletedYear");
-            console.log(seletedYear);
+            console.log("lastMonth");
+            console.log(lastMonth);
             res.data.forEach(item => {
-                if (item.product === "cymbal" && seletedYear === new Date(item.date).getFullYear()) {
-                    if (cymbalSaleSeletedYear[new Date(item.date).getMonth()] === undefined) {
-                        cymbalSaleSeletedYear.push(item.price);
-                        console.log(new Date(item.date).getMonth())
-                    } else {
-                        cymbalSaleSeletedYear[new Date(item.date).getMonth()] += item.price;
-                        console.log(new Date(item.date).getMonth())
-                    }
-                }
-
+                // This is for Sales This / Last Month & Year
+                // console.log("new Date(item.date).getMonth() + 1");
+                // console.log(new Date(item.date).getMonth() + 1);
                 if (item.product === "cymbal" && thisYear === new Date(item.date).getFullYear() && thisMonth === new Date(item.date).getMonth() + 1) {
                     thisMonthCymbalSales += item.price;
                 }
-                if (item.product === "cymbal" && lastYear === new Date(item.date).getFullYear() && lastMonth === new Date(item.date).getMonth() + 1) {
+                if (item.product === "cymbal" && lastMonthYear === new Date(item.date).getFullYear() && lastMonth === new Date(item.date).getMonth() + 1) {
                     lastMonthCymbalSales += item.price;
                 }
                 if (item.product === "cymbal" && thisYear === new Date(item.date).getFullYear()) {
                     thisYearCymbalSales += item.price;
                 }
 
+
+                // This is for Chartjs
+                if (item.product === "cymbal" && seletedYear === new Date(item.date).getFullYear()) {
+                    if (cymbalSaleSeletedYear[new Date(item.date).getMonth()] === undefined) {
+                        cymbalSaleSeletedYear.push(item.price);
+                        // console.log(new Date(item.date).getMonth())
+                    } else {
+                        cymbalSaleSeletedYear[new Date(item.date).getMonth()] += item.price;
+                        // console.log(new Date(item.date).getMonth())
+                    }
+                }
+
             })
-            
             let cymbalSaleSeletedYeartoFixed = []
             cymbalSaleSeletedYear.forEach(value => {
-                console.log(value);
+                // console.log(value);
                 cymbalSaleSeletedYeartoFixed.push(value.toFixed(2));
             })
             setAllOrders(res.data);
+
             setCymbalsOrderLastMonth(CurrencyComma(lastMonthCymbalSales.toFixed(2)));
             setCymbalsOrderThisMonth(CurrencyComma(thisMonthCymbalSales.toFixed(2)));
             setcymbalsOrderThisYear(CurrencyComma(thisYearCymbalSales.toFixed(2)));
             setCymbalsOrderChart(cymbalSaleSeletedYeartoFixed);
-            console.log(cymbalSaleSeletedYeartoFixed);
+            // console.log(cymbalSaleSeletedYeartoFixed);
             cymbalSaleSeletedYear =[];
             console.log("RUnging")
         })

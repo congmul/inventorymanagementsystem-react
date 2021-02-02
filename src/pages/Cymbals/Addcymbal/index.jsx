@@ -98,7 +98,7 @@ export default function Addcymbal() {
                   <Form.Control placeholder="" />
                 </Form.Group>
                 <Form.Group controlId="formNewCymbalGroupCode">
-                  <Form.Label>GroupCode</Form.Label>
+                  <Form.Label>Package Code</Form.Label>
                   <Form.Control as="select" defaultValue="">
                     <option>K0800</option>
                     <option>KCH390</option>

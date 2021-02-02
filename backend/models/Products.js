@@ -32,6 +32,10 @@ const ProductsSchema = new Schema({
         trim: true,
         required: "qty is Required"
     },
+    packageCode: {
+        type: String,
+        trim: true,
+    },
     
 
 },
