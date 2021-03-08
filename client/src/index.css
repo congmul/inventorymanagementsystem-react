@@ -1,0 +1,20 @@
+#body{
+    background-color: #e6e6e6;
+    width:1300px;
+}
+
+.navLink a {
+    color:black;
+    text-decoration: none;
+}
+
+.navLink a:hover {
+    color:black;
+    text-decoration: none;
+}
+
+#root{
+    margin-top: 65px;
+    padding-top: 60px;
+}
+
